@@ -1,18 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DataService } from './data.service';
+import { DataModule } from './data.module';
+import { getModelToken } from '@nestjs/mongoose';
 
 describe('DataService', () => {
-  let service: DataService;
+  let dataService: DataService;
+
+  const mockRepository = {
+    findByType() {
+      return {};
+    },
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [DataService],
-    }).compile();
+      imports: [DataModule],
+    })
+      .overrideProvider(getModelToken('Data'))
+      .useValue(mockRepository)
+      .compile();
 
-    service = module.get<DataService>(DataService);
+    dataService = module.get<DataService>(DataService);
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(dataService).toBeDefined();
   });
 });
