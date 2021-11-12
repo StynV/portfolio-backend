@@ -13,7 +13,7 @@ export class DataController {
     description: 'Type of the data-block',
     schema: { oneOf: [{ type: 'string' }] },
   })
-  async findAll(@Param() params, @Res() res) {
+  async findByType(@Param() params, @Res() res) {
     const list = await this.DataService.findByType(params.type);
     return res.status(HttpStatus.OK).json(list);
   }

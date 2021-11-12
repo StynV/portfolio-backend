@@ -21,4 +21,23 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/GET findByType', () => {
+    return request(app.getHttpServer())
+      .get('/data/type')
+      .expect(200)
+      .expect([]);
+  });
+
+  it('/GET findByType', () => {
+    return request(app.getHttpServer()).get('/data').expect(404).expect({
+      statusCode: 404,
+      message: 'Cannot GET /data',
+      error: 'Not Found',
+    });
+  });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });
