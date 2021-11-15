@@ -12,4 +12,6 @@ export interface Data extends Document {
   ];
   readonly duration: string;
   readonly received: string;
+  readonly position: number;
+  readonly backgroundColor: string;
 }

@@ -12,4 +12,6 @@ export const DataSchema = new mongoose.Schema({
   ],
   duration: String,
   received: String,
+  position: Number,
+  backgroundColor: String,
 });
