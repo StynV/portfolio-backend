@@ -21,6 +21,9 @@ describe('DataService', () => {
     findByType(type: string) {
       return [testData];
     },
+    findAll() {
+      return [testData];
+    },
   };
 
   beforeEach(async () => {
@@ -41,5 +44,10 @@ describe('DataService', () => {
   it('findByType should return a value', () => {
     dataService.findByType('test');
     expect(mockDataModel.findByType('test')).toStrictEqual([testData]);
+  });
+
+  it('findAll should return a value', () => {
+    dataService.findAll();
+    expect(mockDataModel.findAll()).toStrictEqual([testData]);
   });
 });

@@ -10,4 +10,8 @@ export class DataService {
   async findByType(type: string): Promise<any> {
     return await this.dataModel.find({ type: type }).exec();
   }
+
+  async findAll(): Promise<any> {
+    return await this.dataModel.find().exec();
+  }
 }

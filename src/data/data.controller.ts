@@ -17,4 +17,10 @@ export class DataController {
     const list = await this.dataService.findByType(params.type);
     return res.status(HttpStatus.OK).json(list);
   }
+
+  @Get('')
+  async findAll(@Res() res) {
+    const list = await this.dataService.findAll();
+    return res.status(HttpStatus.OK).json(list);
+  }
 }
