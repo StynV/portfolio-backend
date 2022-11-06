@@ -24,7 +24,10 @@ describe('DataService', () => {
       return [testData];
     },
     create(testData) {
-      return [testData];
+      return testData;
+    },
+    update(testData) {
+      return testData;
     },
   };
 
@@ -54,7 +57,10 @@ describe('DataService', () => {
   });
 
   it('create should return a value', () => {
-    dataService.findAll();
-    expect(mockDataModel.create(testData)).toStrictEqual([testData]);
+    expect(mockDataModel.create(testData)).toStrictEqual(testData);
+  });
+
+  it('update should return a value', () => {
+    expect(mockDataModel.update(testData)).toStrictEqual(testData);
   });
 });

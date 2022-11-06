@@ -19,4 +19,9 @@ export class DataService {
     const createdData = new this.dataModel(dataDto);
     return createdData.save();
   }
+
+  async update(type: string, dataDto: Data): Promise<any> {
+    const filter = { type: type };
+    return await this.dataModel.findOneAndUpdate(filter, dataDto).exec();
+  }
 }

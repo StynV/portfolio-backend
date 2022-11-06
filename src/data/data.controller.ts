@@ -6,6 +6,8 @@ import {
   Param,
   Post,
   Body,
+  Put,
+  Query,
 } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { DataService } from './data.service';
@@ -37,5 +39,15 @@ export class DataController {
   async create(@Body() dataDto: Data, @Res() res) {
     const result = await this.dataService.create(dataDto);
     return res.status(HttpStatus.CREATED).json(result);
+  }
+
+  @Put('')
+  async update(
+    @Query() query: { type: string },
+    @Body() dataDto: Data,
+    @Res() res,
+  ) {
+    const result = await this.dataService.update(query.type, dataDto);
+    return res.status(HttpStatus.OK).json(result);
   }
 }
