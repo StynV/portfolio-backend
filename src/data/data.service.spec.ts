@@ -29,6 +29,9 @@ describe('DataService', () => {
     update(testData) {
       return testData;
     },
+    delete(testData) {
+      return testData;
+    },
   };
 
   beforeEach(async () => {
@@ -62,5 +65,9 @@ describe('DataService', () => {
 
   it('update should return a value', () => {
     expect(mockDataModel.update(testData)).toStrictEqual(testData);
+  });
+
+  it('delete should return a value', () => {
+    expect(mockDataModel.delete(testData)).toStrictEqual(testData);
   });
 });

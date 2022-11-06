@@ -8,6 +8,7 @@ import {
   Body,
   Put,
   Query,
+  Delete,
 } from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { DataService } from './data.service';
@@ -48,6 +49,12 @@ export class DataController {
     @Res() res,
   ) {
     const result = await this.dataService.update(query.type, dataDto);
+    return res.status(HttpStatus.OK).json(result);
+  }
+
+  @Delete('')
+  async delete(@Query() query: { type: string }, @Res() res) {
+    const result = await this.dataService.delete(query.type);
     return res.status(HttpStatus.OK).json(result);
   }
 }

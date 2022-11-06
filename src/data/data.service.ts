@@ -24,4 +24,9 @@ export class DataService {
     const filter = { type: type };
     return await this.dataModel.findOneAndUpdate(filter, dataDto).exec();
   }
+
+  async delete(type: string): Promise<any> {
+    const filter = { type: type };
+    return await this.dataModel.findOneAndDelete(filter).exec();
+  }
 }
