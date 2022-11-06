@@ -14,4 +14,9 @@ export class DataService {
   async findAll(): Promise<any> {
     return await this.dataModel.find().exec();
   }
+
+  async create(dataDto: Data): Promise<any> {
+    const createdData = new this.dataModel(dataDto);
+    return createdData.save();
+  }
 }

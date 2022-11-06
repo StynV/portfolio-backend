@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { DataService } from './data.service';
 import { DataModule } from './data.module';
-import { Data } from './interfaces/data.interface';
 import { getModelToken } from '@nestjs/mongoose';
 
 describe('DataService', () => {
@@ -22,6 +21,9 @@ describe('DataService', () => {
       return [testData];
     },
     findAll() {
+      return [testData];
+    },
+    create(testData) {
       return [testData];
     },
   };
@@ -49,5 +51,10 @@ describe('DataService', () => {
   it('findAll should return a value', () => {
     dataService.findAll();
     expect(mockDataModel.findAll()).toStrictEqual([testData]);
+  });
+
+  it('create should return a value', () => {
+    dataService.findAll();
+    expect(mockDataModel.create(testData)).toStrictEqual([testData]);
   });
 });

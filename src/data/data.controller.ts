@@ -1,6 +1,15 @@
-import { Controller, Get, HttpStatus, Res, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpStatus,
+  Res,
+  Param,
+  Post,
+  Body,
+} from '@nestjs/common';
 import { ApiParam } from '@nestjs/swagger';
 import { DataService } from './data.service';
+import { Data } from './interfaces/data.interface';
 
 @Controller('data')
 export class DataController {
@@ -22,5 +31,11 @@ export class DataController {
   async findAll(@Res() res) {
     const list = await this.dataService.findAll();
     return res.status(HttpStatus.OK).json(list);
+  }
+
+  @Post('')
+  async create(@Body() dataDto: Data, @Res() res) {
+    const result = await this.dataService.create(dataDto);
+    return res.status(HttpStatus.CREATED).json(result);
   }
 }
