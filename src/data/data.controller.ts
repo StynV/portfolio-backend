@@ -4,7 +4,7 @@ import { DataService } from './data.service';
 
 @Controller('data')
 export class DataController {
-  constructor(private readonly DataService: DataService) {}
+  constructor(private readonly dataService: DataService) {}
 
   @Get(':type')
   @ApiParam({
@@ -14,7 +14,7 @@ export class DataController {
     schema: { oneOf: [{ type: 'string' }] },
   })
   async findByType(@Param() params, @Res() res) {
-    const list = await this.DataService.findByType(params.type);
+    const list = await this.dataService.findByType(params.type);
     return res.status(HttpStatus.OK).json(list);
   }
 }
